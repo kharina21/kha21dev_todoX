@@ -2,7 +2,6 @@ import { Task } from "../models/Task.js";
 import mongoose from "mongoose";
 export const getAllTask = async (req, res) => {
     const { filter } = req.query;
-    console.log("filter: ", filter);
     const now = new Date(); //trả về ngày hôm nay
     let startDate;
     switch (filter) {
@@ -12,7 +11,6 @@ export const getAllTask = async (req, res) => {
                 now.getMonth(),
                 now.getDate()
             );
-            console.log("start date:", startDate);
             break;
         }
         case "week": {
@@ -24,18 +22,16 @@ export const getAllTask = async (req, res) => {
             //now.getDate lấy ra ngày trong tháng/ ví dụ tháng này có 30 ngày => trả về 30
             //now.getDay trả về thứ trong tuần (0,1,2,3,4,5,6) 0: là chủ nhật 1->6 từ thứ 2 đến thứ 7
             startDate = new Date(now.getFullYear(), now.getMonth(), mondayDate);
-            console.log("start date:", startDate);
-            console.log("monday date:", mondayDate);
+
             break;
         }
         case "month": {
             startDate = new Date(now.getFullYear(), now.getMonth(), 1);
-            console.log("start date:", startDate);
             break;
         }
         default:
             startDate = "";
-            console.log("start date:", startDate);
+
             break;
     }
 

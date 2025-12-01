@@ -77,7 +77,6 @@ const TaskCard = ({ task, index, handleUpdated }) => {
                 task.status === "completed" && "opacity-75"
             )}
             style={{ animationDelay: `${index * 50}ms` }}
-            onClick={() => setIsEditing(true)}
         >
             <div className="flex items-center gap-4">
                 {/* nút tròn */}
@@ -125,6 +124,7 @@ const TaskCard = ({ task, index, handleUpdated }) => {
                                     ? "line-through text-muted-foreground"
                                     : "text-foreground"
                             )}
+                            onClick={() => setIsEditing(true)}
                         >
                             {task.title}
                         </p>
